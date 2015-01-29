@@ -41,4 +41,8 @@
   (compile "make -k"))
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
 
+;;lisp stuff
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
+
 (shell)
