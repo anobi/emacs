@@ -4,10 +4,13 @@
 
 (require 'cl)
 (require 'cc-mode)
-
+;;(require 'helm-config)
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
 
 (require 'autopair)
 (autopair-global-mode 1)
@@ -24,6 +27,9 @@
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 (define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+(setq tab-always-indent 'complete)
+(add-to-list 'completion-styles 'initials t)
 
 (setq-default c-basic-offset 4 c-default-style "linux")
 (setq-default tab-width 4 indent-tabs-mode t)
@@ -42,7 +48,9 @@
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
 
 ;;lisp stuff
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
+(setq inferior-lisp-program "sbcl")
+(require 'slime-autoloads)
+(slime-setup '(slime-fancy))
 
+(slime)
 (shell)
