@@ -52,5 +52,22 @@
 (require 'slime-autoloads)
 (slime-setup '(slime-fancy))
 
+;;haskell stuff
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;;web stuff (html, js, etc)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
+(add-to-list 'ac-modes 'web-mode)
+(add-to-list 'ac-modes 'js-mode)
+
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-auto-quoting t)
+
+
+(autoload 'js-mode "js" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+
 (slime)
 (shell)

@@ -1,0 +1,30 @@
+;; Object js/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "js/"
+  :tables
+  (list
+    (semanticdb-table "webgl.html"
+      :major-mode 'js-mode
+      :tags 
+        '( ("gl" variable nil nil [129 136])
+            ("start" function nil nil [137 158]))          
+      :file "webgl.html"
+      :pointmax 171
+      :fsize 137
+      :lastmodtime '(21733 53504 536117 297000)
+      :unmatched-syntax '(($EOI 171 . 171) (DIV 162 . 163) (SEMICOLON 158 . 159) (LESS_THAN 161 . 162) (LESS_THAN 96 . 97) (DIV 88 . 89) (LESS_THAN 87 . 88) (DIV 78 . 79) (VARIABLE 35 . 37) (VARIABLE 49 . 54) (VARIABLE 61 . 67) (LESS_THAN 77 . 78) (VARIABLE 7 . 13) (LESS_THAN 27 . 28) (LESS_THAN 1 . 2) ($EOI 172 . 172) (DIV 163 . 164) (SEMICOLON 158 . 159) (LESS_THAN 162 . 163) (LESS_THAN 96 . 97) (DIV 88 . 89) (LESS_THAN 87 . 88) (DIV 78 . 79) (VARIABLE 35 . 37) (VARIABLE 49 . 54) (VARIABLE 61 . 67) (LESS_THAN 77 . 78) (VARIABLE 7 . 13) (LESS_THAN 27 . 28) (LESS_THAN 1 . 2) ($EOI 170 . 170) (DIV 161 . 162) (LESS_THAN 160 . 161) (LESS_THAN 96 . 97) (DIV 88 . 89) (LESS_THAN 87 . 88) (DIV 78 . 79) (VARIABLE 35 . 37) (VARIABLE 49 . 54) (VARIABLE 61 . 67) (LESS_THAN 77 . 78) (VARIABLE 7 . 13) (LESS_THAN 27 . 28) (LESS_THAN 1 . 2)))
+    (semanticdb-table "gltest.js"
+      :major-mode 'js-mode
+      :tags 
+        '( ("gl" variable nil nil [1 8])
+            ("start" function nil nil [10 263])
+            ("initWebGL" function (:arguments 
+              ( ("canvas" variable nil (reparse-symbol FormalParameterList) [284 290]))              ) nil [265 464]))          
+      :file "gltest.js"
+      :pointmax 465
+      :fsize 464
+      :lastmodtime '(21733 55358 35164 8000)
+      :unmatched-syntax nil))
+  :file "!home!niko!projects!js!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
