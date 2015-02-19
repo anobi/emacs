@@ -3,3 +3,10 @@
 
 # Packaging
 .cask
+
+# Misc
+ac-comphist.dat
+
+# Folders
+auto-save-list
+semanticdb
