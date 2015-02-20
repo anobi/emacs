@@ -49,7 +49,12 @@
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
 
 ;;lisp stuff
-(setq inferior-lisp-program "sbcl")
+
+(if (eq system-type 'darwin)
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (setq inferior-lisp-program "sbcl")
+)
+
 (require 'slime-autoloads)
 (slime-setup '(slime-fancy))
 
