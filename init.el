@@ -48,20 +48,26 @@
   (compile "make -k"))
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
 
-;;lisp stuff
+;;
+;; lisp stuff
+;;
 
+;; use different sbcl path for osx
 (if (eq system-type 'darwin)
   (setq inferior-lisp-program "/usr/bin/sbcl")
-  (setq inferior-lisp-program "sbcl")
-)
-
+  (setq inferior-lisp-program "sbcl"))
+;; slime
 (require 'slime-autoloads)
 (slime-setup '(slime-fancy))
 
-;;haskell stuff
+;;
+;; haskell stuff
+;;
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;;web stuff (html, js, etc)
+;;
+;; web stuff (html, js, etc)
+;;
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
