@@ -1,4 +1,4 @@
-;;; skewer-mode-autoloads.el --- automatically extracted autoloads
+;;; js2-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
@@ -8,4 +8,4 @@
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
 ;; End:
-;;; skewer-mode-autoloads.el ends here
+;;; js2-mode-autoloads.el ends here

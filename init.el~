@@ -5,6 +5,7 @@
 (require 'cl)
 (require 'cc-mode)
 
+
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -15,10 +16,9 @@
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 
-(electric-pair-mode 1)
-;;(require 'autopair)
-;;(autopair-global-mode 1)
-;;(setq autopair-autowrap t)
+(require 'autopair)
+(autopair-global-mode 1)
+(setq autopair-autowrap t)
 
 (defun my:ac-c-header-init()
   (require 'auto-complete-c-headers)
@@ -61,27 +61,13 @@
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
 (add-to-list 'ac-modes 'web-mode)
-(add-to-list 'ac-modes 'js2-mode)
+(add-to-list 'ac-modes 'js-mode)
 
-(add-hook 'web-mode-hook 'autopair-mode)
-(add-hook 'js2-mode-hook 'autopair-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-
-(setq web-mode-disable-auto-pairing t)
+(setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-auto-quoting t)
-(setq js2-highlight-level 3)
+
+(autoload 'js-mode "js" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 
 (slime)
 (shell)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(max-specpdl-size 11380))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
