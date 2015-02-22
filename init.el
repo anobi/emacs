@@ -54,7 +54,7 @@
 
 ;; use different sbcl path for osx
 (if (eq system-type 'darwin)
-  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
   (setq inferior-lisp-program "sbcl"))
 ;; slime
 (require 'slime-autoloads)
