@@ -68,7 +68,7 @@
 ;;
 
 (require 'python-mode)
-(setq-default py-shell-name "ipython")
+(setq-default py-shell-name "ipython3")
 (setq-default py-which-bufname "IPython")
 (setq py-split-window-on-execute t)
 (setq py-smart-indentation t)
