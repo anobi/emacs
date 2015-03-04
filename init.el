@@ -14,6 +14,9 @@
 (require 'cl)
 (require 'cc-mode)
 
+(require 'ido)
+(ido-mode t)
+
 (require 'evil)
 (evil-mode 1)
 
