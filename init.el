@@ -29,6 +29,12 @@
 
 (electric-pair-mode 1)
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;;
+;; C/C++ stuff
+;;
+
 (defun my:ac-c-header-init()
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers)
@@ -56,6 +62,17 @@
   (save-buffer 0)
   (compile "make -k"))
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
+
+;;
+;; Python stuff
+;;
+
+(require 'python-mode)
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+(setq py-split-window-on-execute t)
+(setq py-smart-indentation t)
+(setq py-python-command "python3")
 
 ;;
 ;; lisp stuff
