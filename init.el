@@ -112,19 +112,6 @@
 (setq web-mode-enable-auto-quoting t)
 (setq js2-highlight-level 3)
 
-
-
-(require 'flycheck)
-(flycheck-define-checker javascript-jslint-reporter
-  "Javascript blah blah"
-  :command ("jslint" "--terse" source)
-  :error-patterns
-  ((error line-start (1+ nonl) ":" line ":" column ":" (message) line-end))
-  :modes (js-mode js2-mode))
-(add-hook 'js-mode-hook (lambda()
-	(flycheck-select-checker 'javascript-jslint-reporter)
-	(flycheck-mode)))
-
 (slime)
 (shell)
 
