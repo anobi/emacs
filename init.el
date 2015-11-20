@@ -10,7 +10,6 @@
 (package-initialize)
 
 
-
 (require 'cl)
 (require 'cc-mode)
 
@@ -124,8 +123,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (inkpot)))
+ '(custom-safe-themes
+   (quote
+    ("3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
  '(max-specpdl-size 11380)
  '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
