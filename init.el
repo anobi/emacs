@@ -126,7 +126,7 @@
  '(custom-enabled-themes (quote (inkpot)))
  '(custom-safe-themes
    (quote
-    ("3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
+    ("2a04368d8ea8e8409a9f95bafaa4770de4562ba014fcc9a08621943f35e63eba" "3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
  '(max-specpdl-size 11380)
  '(menu-bar-mode nil)
  '(show-paren-mode t)
