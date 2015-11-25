@@ -126,7 +126,7 @@
 (when (eq system-type 'darwin)
     (set-frame-font "Monospace-8"))
 (when (eq system-type 'windows-nt)
-    (set-frame-font "Monospace-8"))
+    (set-frame-font "Consolas-12"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
