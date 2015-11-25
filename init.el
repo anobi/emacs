@@ -1,3 +1,6 @@
+;;; package -- Summary:
+;;; Commentary:
+;;; Code:
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
@@ -116,6 +119,14 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+
+;; Fonts and such
+(when (eq system-type 'gnu/linux)
+    (set-frame-font "Monospace-8"))
+(when (eq system-type 'darwin)
+    (set-frame-font "Monospace-8"))
+(when (eq system-type 'windows-nt)
+    (set-frame-font "Monospace-8"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
