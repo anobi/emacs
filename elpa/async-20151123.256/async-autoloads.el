@@ -3,7 +3,11 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
+<<<<<<< HEAD:elpa/async-20151123.256/async-autoloads.el
 ;;;### (autoloads nil "async" "async.el" (22098 65149 268225 461000))
+=======
+;;;### (autoloads nil "async" "async.el" (22099 16404 0 0))
+>>>>>>> c2383ede71536c67f03d15e70127bd1ed4bfe5df:elpa/async-20151123.256/async-autoloads.el
 ;;; Generated autoloads from async.el
 
 (autoload 'async-start-process "async" "\
@@ -68,8 +72,13 @@ returns nil.  It can still be useful, however, as an argument to
 
 ;;;***
 
+<<<<<<< HEAD:elpa/async-20151123.256/async-autoloads.el
 ;;;### (autoloads nil "async-bytecomp" "async-bytecomp.el" (22098
 ;;;;;;  65149 264225 461000))
+=======
+;;;### (autoloads nil "async-bytecomp" "async-bytecomp.el" (22099
+;;;;;;  16404 0 0))
+>>>>>>> c2383ede71536c67f03d15e70127bd1ed4bfe5df:elpa/async-20151123.256/async-autoloads.el
 ;;; Generated autoloads from async-bytecomp.el
 
 (autoload 'async-byte-recompile-directory "async-bytecomp" "\
@@ -96,8 +105,13 @@ Async compilation of packages can be controlled by
 
 ;;;***
 
+<<<<<<< HEAD:elpa/async-20151123.256/async-autoloads.el
 ;;;### (autoloads nil "dired-async" "dired-async.el" (22098 65149
 ;;;;;;  252225 461000))
+=======
+;;;### (autoloads nil "dired-async" "dired-async.el" (22099 16404
+;;;;;;  0 0))
+>>>>>>> c2383ede71536c67f03d15e70127bd1ed4bfe5df:elpa/async-20151123.256/async-autoloads.el
 ;;; Generated autoloads from dired-async.el
 
 (defvar dired-async-mode nil "\
@@ -116,8 +130,13 @@ Do dired actions asynchronously.
 
 ;;;***
 
+<<<<<<< HEAD:elpa/async-20151123.256/async-autoloads.el
 ;;;### (autoloads nil nil ("async-pkg.el" "smtpmail-async.el") (22098
 ;;;;;;  65149 296839 983000))
+=======
+;;;### (autoloads nil nil ("async-pkg.el" "smtpmail-async.el") (22099
+;;;;;;  16405 21000 0))
+>>>>>>> c2383ede71536c67f03d15e70127bd1ed4bfe5df:elpa/async-20151123.256/async-autoloads.el
 
 ;;;***
 
