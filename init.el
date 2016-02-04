@@ -1,3 +1,6 @@
+;;; package -- Summary:
+;;; Commentary:
+;;; Code:
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
@@ -127,6 +130,14 @@
       mac-command-modifier 'meta
       x-select-enable-clipboard t)
 
+;; Fonts and such
+(when (eq system-type 'gnu/linux)
+    (set-frame-font "Monospace-8"))
+(when (eq system-type 'darwin)
+    (set-frame-font "Monospace-8"))
+(when (eq system-type 'windows-nt)
+    (set-frame-font "Consolas-12"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -136,7 +147,7 @@
  '(custom-enabled-themes (quote (inkpot)))
  '(custom-safe-themes
    (quote
-    ("2a04368d8ea8e8409a9f95bafaa4770de4562ba014fcc9a08621943f35e63eba" "3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
+    ("3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
  '(max-specpdl-size 11380)
  '(menu-bar-mode nil)
  '(show-paren-mode t)

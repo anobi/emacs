@@ -29,6 +29,11 @@
 (declare-function racket-complete-at-point "racket-complete.el" (&optional predicate))
 (declare-function racket-eldoc-function    "racket-complete.el" ())
 
+(defvar racket-mode-abbrev-table nil)
+(define-abbrev-table 'racket-mode-abbrev-table ())
+
+;;; syntax-table and syntax-propertize-function
+
 (defvar racket-mode-syntax-table
   (let ((st (make-syntax-table))
 	(i 0))
@@ -80,9 +85,6 @@
     (modify-syntax-entry ?|  "_ 23bn" st)
 
     st))
-
-(defvar racket-mode-abbrev-table nil)
-(define-abbrev-table 'racket-mode-abbrev-table ())
 
 (defun racket-syntax-propertize-function (start end)
   (goto-char start)
@@ -180,7 +182,10 @@ property whose value is STRING. The close | syntax is set by
                                'syntax-table
                                (string-to-syntax "|"))))))))
 
+;;;
+
 (defun racket--variables-for-both-modes ()
+  "Set variables common to `racket-mode' and `racket-repl-mode'."
   ;;; Syntax and font-lock stuff.
   (set-syntax-table racket-mode-syntax-table)
   (setq-local syntax-propertize-function #'racket-syntax-propertize-function)
@@ -192,7 +197,6 @@ property whose value is STRING. The close | syntax is set by
                     nil                       ;syntax-alist
                     nil                       ;syntax-begin
                     ;; Additional variables:
-                    (cons 'syntax-begin-function #'racket--module-level-form-start)
                     (cons 'font-lock-mark-block-function #'mark-defun)
                     (cons 'parse-sexp-lookup-properties t)
                     (cons 'font-lock-multiline t)
@@ -256,20 +260,18 @@ property to t so that `delete-selection-mode' works:
 
   (put 'racket-command 'delete-selection t)
 
-If necessary the value of the property can be a function, as done
-by `racket--set-delete-selection-property-for-parens'."
-  (let ((last-command-event event)) ;set this for hooks
+If necessary the value of the property can be a function, for
+example `racket--electric-pair-mode-not-active'."
+  (let ((last-command-event event))     ;set this for hooks
     (self-insert-command (prefix-numeric-value nil))))
 
-(defun racket--set-delete-selection-property-for-parens (command)
-  "Set `delete-selection-mode' property for commands that insert parens.
-Inserted text should replace the selection unless a mode like
-`electric-pair-mode' is enabled."
-  (put command
-       'delete-selection
-       (lambda ()
-         (not (memq 'electric-pair-mode minor-mode-list)))))
-
+(defun racket--electric-pair-mode-not-active ()
+  "A suitable value for the 'delete-selection property of
+commands that insert parens: Inserted text should replace the
+selection unless a mode like `electric-pair-mode' is enabled, in
+which case the selection is to be wrapped in parens."
+  (not (and (boundp 'electric-pair-mode)
+            electric-pair-mode)))
 
 ;;; Automatically insert matching \?) \?] or \?}
 
@@ -288,7 +290,8 @@ With a prefix, insert the typed character as-is."
          (close-char (and close-pair   (cdr close-pair))))
     (racket--self-insert (or close-char last-command-event))))
 
-(racket--set-delete-selection-property-for-parens 'racket-insert-closing)
+(put 'racket-insert-closing 'delete-selection
+     #'racket--electric-pair-mode-not-active)
 
 
 ;;; Smart open bracket
@@ -409,10 +412,9 @@ Returns '[' or nil."
        (save-excursion
          (ignore-errors
            (let ((pt (point)))
-             (racket-backward-up-list) ;works even in strings
+             (backward-up-list)
              (backward-sexp post-backward-sexps)
-             (when (or (racket--in-string-or-comment (point) pt)
-                       (looking-at-p regexp))
+             (when (looking-at-p regexp)
                ?\[))))))
 
 (defun racket-smart-open-bracket ()
@@ -444,7 +446,14 @@ delimiters follow the Racket conventions for these forms. (When
 `electric-pair-mode' or `paredit-mode' is active, you need not
 even press `]`."
   (interactive)
-  (let ((ch (or (and (not racket-smart-open-bracket-enable) ?\[)
+  (let ((ch (or (and (not racket-smart-open-bracket-enable)
+                     ?\[)
+                (and (save-excursion
+                       (let ((pt (point)))
+                         (beginning-of-defun)
+                         (let ((state (parse-partial-sexp (point) pt)))
+                           (or (nth 3 state) (nth 4 state)))))
+                     ?\[)
                 (cl-some (lambda (xs)
                            (apply #'racket--smart-open-bracket-helper xs))
                          racket--smart-open-bracket-data)
@@ -454,7 +463,8 @@ even press `]`."
         (racket--paredit-aware-open ch)
       (racket--self-insert ch))))
 
-(racket--set-delete-selection-property-for-parens 'racket-smart-open-bracket)
+(put 'racket-smart-open-bracket 'delete-selection
+     #'racket--electric-pair-mode-not-active)
 
 (eval-after-load 'paredit
   '(progn
@@ -531,6 +541,7 @@ paredit is loaded, so check for this function's existence using
 (defun racket--beginning-of-defun-function ()
   "Like `beginning-of-defun' but aware of Racket module forms."
   (let ((orig (point)))
+    (racket--escape-string-or-comment)
     (pcase (racket--module-level-form-start)
       (`() (ignore-errors (backward-sexp 1)))
       (pos (goto-char pos)))
@@ -539,19 +550,30 @@ paredit is loaded, so check for this function's existence using
 
 ;;; Misc
 
-(defun racket-backward-up-list ()
-  "Like `backward-up-list' but also works when point is in a string literal."
-  (interactive)
-  (let ((ppss (syntax-ppss)))
-    (when (nth 3 ppss)
-      (goto-char (nth 8 ppss))))
-  (backward-up-list 1))
+(defun racket--escape-string-or-comment ()
+  "If point is in a string or comment, move to its start.
 
-(defun racket--in-string-or-comment (from to)
-  "See if point is in a string or comment, without moving point."
-  (save-excursion
-    (let ((state (parse-partial-sexp from to)))
-      (or (nth 3 state) (nth 4 state)))))
+Note that this can be expensive, as it uses `syntax-ppss' which
+parses from the start of the buffer. Although `syntax-ppss' uses
+a cache, that is invalidated after any changes to the buffer. As
+a result, the worst case would be to call this function after
+every character is inserted to a buffer."
+  (let* ((ppss (syntax-ppss))
+         (string-or-comment-start (nth 8 ppss)))
+    (when string-or-comment-start
+      (goto-char string-or-comment-start))))
+
+(defun racket-backward-up-list ()
+  "Like `backward-up-list' but works when point is in a string or comment.
+
+Typically you should not use this command in Emacs Lisp --
+especially not repeatedly. Instead, initially use
+`racket--escape-string-or-comment' to move to the start of a
+string or comment, if any, then use normal `backward-up-list'
+repeatedly."
+  (interactive)
+  (racket--escape-string-or-comment)
+  (backward-up-list 1))
 
 (defun racket--open-paren (back-func)
   "Use BACK-FUNC to find an opening ( [ or { if any.
