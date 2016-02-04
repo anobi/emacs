@@ -8,6 +8,20 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq mac-option-modifier nil
+      mac-command-modifier 'meta
+      x-select-enable-clipboard t)
+
+;; Fonts and such
+(when (eq system-type 'gnu/linux)
+    (set-frame-font "Monospace-8"))
+(when (eq system-type 'darwin)
+    (set-frame-font "Share-TechMono-11"))
+(when (eq system-type 'windows-nt)
+    (set-frame-font "Consolas-12"))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
@@ -123,20 +137,6 @@
 
 (slime)
 (shell)
-
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq mac-option-modifier nil
-      mac-command-modifier 'meta
-      x-select-enable-clipboard t)
-
-;; Fonts and such
-(when (eq system-type 'gnu/linux)
-    (set-frame-font "Monospace-8"))
-(when (eq system-type 'darwin)
-    (set-frame-font "Monospace-8"))
-(when (eq system-type 'windows-nt)
-    (set-frame-font "Consolas-12"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
