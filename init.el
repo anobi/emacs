@@ -67,6 +67,13 @@
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
 
 ;;
+;; Omnisharp
+;;
+
+(setq omnisharp-server-executable-path
+      "/usr/local/bin/omnisharp")
+
+;;
 ;; Python stuff
 ;;
 
@@ -116,6 +123,9 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq mac-option-modifier nil
+      mac-command-modifier 'meta
+      x-select-enable-clipboard t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
