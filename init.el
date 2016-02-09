@@ -39,14 +39,15 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-
-(require 'ac-slime)
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-
 (electric-pair-mode 1)
+
+(autoload 'enable-paredit-mode "paredit" "Paredit mode" t)
+(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'racket-mode-hook #'enable-paredit-mode)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -73,9 +74,6 @@
 
 (semantic-mode 1)
 (global-semantic-idle-scheduler-mode 1)
-(defun my:add-semantic-to-autocomplete()
-  (add-to-list 'ac-sources 'ac-source-semantic))
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 
 (defun my:save-and-compile()
   (interactive "")
@@ -124,12 +122,9 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
-(add-to-list 'ac-modes 'web-mode)
-(add-to-list 'ac-modes 'js2-mode)
 
 (add-hook 'web-mode-hook 'autopair-mode)
 (add-hook 'js2-mode-hook 'autopair-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (setq web-mode-disable-auto-pairing t)
 (setq web-mode-enable-auto-quoting t)
@@ -147,7 +142,7 @@
  '(custom-enabled-themes (quote (inkpot)))
  '(custom-safe-themes
    (quote
-	("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
+	("2a04368d8ea8e8409a9f95bafaa4770de4562ba014fcc9a08621943f35e63eba" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "3038a172e5b633d0b1ee284e6520a73035d0cb52f28b1708e22b394577ad2df1" default)))
  '(max-specpdl-size 11380)
  '(menu-bar-mode nil)
  '(show-paren-mode t)
