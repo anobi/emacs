@@ -1,12 +1,15 @@
 ;;; package -- Summary:
 ;;; Commentary:
 ;;; Code:
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(global-linum-mode 1)
-(column-number-mode 1)
-(show-paren-mode 1)
+
+(if (display-graphic-p)
+  (progn
+    (tool-bar-mode 0)
+    (menu-bar-mode 0)
+    (scroll-bar-mode 0)
+    (global-linum-mode 1)
+    (column-number-mode 1)
+    (show-paren-mode 1)))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
