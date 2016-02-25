@@ -20,6 +20,7 @@
 (when (eq system-type 'darwin)
     (set-frame-font "Share-TechMono-11"))
 (when (eq system-type 'windows-nt)
+  (setq tramp-default-method "plink")
     (set-frame-font "Consolas-12"))
 
 (require 'package)
@@ -80,6 +81,7 @@
   (save-buffer 0)
   (compile "make -k"))
 (define-key c-mode-map "\C-c\C-c" 'my:save-and-compile)
+(define-key c-mode-map "\C-c\C-k" 'recompile)
 
 ;;
 ;; Omnisharp
