@@ -21,4 +21,4 @@
 (when (eq system-type 'darwin)
     (set-frame-font "Share-TechMono-11"))
 (when (eq system-type 'windows-nt)
-    (set-frame-font "Consolas-12"))
+    (set-frame-font "Hack-10"))

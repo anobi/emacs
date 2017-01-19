@@ -8,8 +8,7 @@
     projectile
     helm
     helm-projectile
-    flycheck
-    material-theme))
+    flycheck))
 
 (package-initialize)
 
