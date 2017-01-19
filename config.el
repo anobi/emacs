@@ -10,6 +10,11 @@
 (require 'helm)
 (require 'helm-config)
 
+;; Projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)

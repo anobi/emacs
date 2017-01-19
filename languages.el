@@ -14,6 +14,7 @@
 (setq-default c-basic-offset 4 c-default-style "linux")
 (setq-default tab-width 4 indent-tabs-mode t)
 
+(require 'cc-mode)
 (defun my:save-and-compile()
   (interactive "")
   (save-buffer 0)

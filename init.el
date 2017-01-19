@@ -5,7 +5,7 @@
 (load "~/.emacs.d/interface")
 (load "~/.emacs.d/packages")
 (load "~/.emacs.d/config")
-;;(load "~/.emacs.d/languages")
+(load "~/.emacs.d/languages")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

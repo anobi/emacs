@@ -5,7 +5,9 @@
     slime
     evil
     ido
+    projectile
     helm
+    helm-projectile
     flycheck
     material-theme))
 

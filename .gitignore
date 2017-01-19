@@ -10,6 +10,7 @@
 ac-comphist.dat
 ido.last
 tramp
+*.eld
 
 # Folders
 auto-save-list
