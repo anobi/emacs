@@ -37,3 +37,9 @@
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Company
+(add-hook 'after-init-hook 'global-company-mode)
+
+
+;;; config.el ends here
