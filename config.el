@@ -1,3 +1,11 @@
+;;; config.el --- Configures the plugins
+
+;;; Commentary:
+;;; Runs after the package manager, config all the installed packages here
+
+;;; Code:
+
+
 ;; Evil
 (require 'evil)
 (evil-mode 1)

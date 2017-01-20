@@ -1,4 +1,4 @@
-;;; package -- Summary:
+;;; init.el --- Main init file, duh
 ;;; Commentary:
 ;;; Code:
 

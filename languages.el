@@ -1,3 +1,11 @@
+;;; languages.el --- Configurations for programming languages
+
+;;; Commentary:
+;;; Config the language specific things here
+
+;;; Code:
+
+
 ;; lisp
 
 ;; use different sbcl path for osx

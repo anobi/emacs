@@ -1,3 +1,11 @@
+;;; interface.el --- Interface configs
+
+;;; Commentary:
+;;; Fonts, themes and such, config them heres
+
+;;; Code:
+
+
 ;; Interface config
 
 (if (display-graphic-p)

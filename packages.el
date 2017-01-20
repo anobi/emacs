@@ -1,3 +1,10 @@
+;;; package --- Installs the plugins and stuff
+
+;;; Commentary:
+;;; No comments...
+
+;;; Code:
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
@@ -8,7 +15,8 @@
     projectile
     helm
     helm-projectile
-    flycheck))
+    flycheck
+	org))
 
 (package-initialize)
 
