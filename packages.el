@@ -16,6 +16,7 @@
     helm
     helm-projectile
     flycheck
+	company
 	org))
 
 (package-initialize)
