@@ -51,5 +51,8 @@
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Omnisharp
+(require 'omnisharp-settings)
+(require 'omnisharp-utils)
 
 ;;; config.el ends here

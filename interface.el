@@ -23,6 +23,15 @@
       mac-command-modifier 'meta
       x-select-enable-clipboard t)
 
+(setq enable-recursive-minibuffers t)
+
+;; Shell settings
+(setq explicit-shell-file-name (getenv "SHELL"))
+(setq shell-file-name "bash")
+(setq explicit-bash.exe-args '("--noediting" "--login" "-i"))
+(setenv "SHELL" shell-file-name)
+(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
+
 ;; Fonts
 (when (eq system-type 'gnu/linux)
     (set-frame-font "Monospace-8"))

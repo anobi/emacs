@@ -11,13 +11,15 @@
 (setq package-list '(
     slime
     evil
+	paredit
     ido
     projectile
     helm
     helm-projectile
     flycheck
 	company
-	org))
+	org
+	racket-mode))
 
 (package-initialize)
 
