@@ -8,7 +8,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
-(setq package-list '(
+(defvar package-list '(
     slime
     evil
 	paredit
@@ -18,6 +18,7 @@
     helm
     helm-projectile
 	helm-company
+	yasnippet
     flycheck
 	org
 	racket-mode
@@ -31,3 +32,5 @@
 (dolist (package package-list)
     (unless (package-installed-p package)
         (package-install package)))
+
+;;; packages.el ends here

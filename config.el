@@ -19,12 +19,12 @@
 (require 'helm-config)
 (eval-after-load 'company
   '(progn
-	 (define-key company-mode-map (kbd "<C-tab>") 'helm-company)
-	 (define-key company-active-map (kbd "<C-tab>") 'helm-company)))
+	 (define-key 'company-mode-map (kbd "<C-tab>") 'helm-company)
+	 (define-key 'company-active-map (kbd "<C-tab>") 'helm-company)))
 
 ;; Projectile
 (projectile-global-mode)
-(setq projectile-completion-system 'helm)
+(defvar projectile-completion-system 'helm)
 (helm-projectile-on)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -36,15 +36,15 @@
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-z") 'helm-select-action)
 
-(setq helm-autoresize-max-height 0)
-(setq helm-autoresize-min-height 20)
-(setq helm-split-window-in-side-p t
-      helm-move-to-line-cycle-in-source t
-      helm-ff-search-library-in-sexp t)
+(defvar helm-autoresize-max-height 0)
+(defvar helm-autoresize-min-height 20)
+(defvar helm-split-window-in-side-p t)
+(defvar helm-move-to-line-cycle-in-source t)
+(defvar helm-ff-search-library-in-sexp t)
 
-(setq helm-M-x-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t
-	  helm-recentf-fuzzy-match t)
+(defvar helm-M-x-fuzzy-match t)
+(defvar helm-buffers-fuzzy-matching t)
+(defvar helm-recentf-fuzzy-match t)
 
 (helm-autoresize-mode 1)
 (helm-mode 1)
@@ -54,13 +54,13 @@
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-dabbrev-downcase 0)
-(setq company-idle-delay 0)
-(defun tab-indent-or-complete ()
+(defvar company-dabbrev-downcase 0)
+(defvar company-idle-delay 0)
+(defun tab-indent-or-complete nil
   (interactive)
   (if (minibufferp)
       (minibuffer-complete)
-    (if (or (not yas-minor-mode)
+    (if (or (not 'yas-minor-mode)
             (null (do-yas-expand)))
         (if (check-expansion)
             (company-complete-common)
@@ -71,5 +71,6 @@
 ;; Slime REPL
 (add-hook 'slime-mode-hook 'electric-pair-mode)
 (add-hook 'slime-mode-hook 'paredit-mode)
+
 
 ;;; config.el ends here
