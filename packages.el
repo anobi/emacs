@@ -14,12 +14,14 @@
 	paredit
     ido
     projectile
+	company
     helm
     helm-projectile
+	helm-company
     flycheck
-	company
 	org
-	racket-mode))
+	racket-mode
+	haskell-mode))
 
 (package-initialize)
 

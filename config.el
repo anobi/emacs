@@ -17,6 +17,10 @@
 ;; Helm
 (require 'helm)
 (require 'helm-config)
+(eval-after-load 'company
+  '(progn
+	 (define-key company-mode-map (kbd "<C-tab>") 'helm-company)
+	 (define-key company-active-map (kbd "<C-tab>") 'helm-company)))
 
 ;; Projectile
 (projectile-global-mode)
@@ -50,9 +54,22 @@
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas-minor-mode)
+            (null (do-yas-expand)))
+        (if (check-expansion)
+            (company-complete-common)
+          (indent-for-tab-command)))))
 
-;; Omnisharp
-(require 'omnisharp-settings)
-(require 'omnisharp-utils)
+(global-set-key [backtab] 'tab-indent-or-complete)
+
+;; Slime REPL
+(add-hook 'slime-mode-hook 'electric-pair-mode)
+(add-hook 'slime-mode-hook 'paredit-mode)
 
 ;;; config.el ends here

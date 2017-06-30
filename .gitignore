@@ -11,6 +11,7 @@ ac-comphist.dat
 ido.last
 tramp
 *.eld
+*.cache
 recentf
 
 # Folders
@@ -18,3 +19,4 @@ auto-save-list
 semanticdb
 elpa
 eshell
+.cache
