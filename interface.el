@@ -36,6 +36,6 @@
 (when (eq system-type 'gnu/linux)
     (set-frame-font "Monospace-8"))
 (when (eq system-type 'darwin)
-    (set-frame-font "Share-TechMono-11"))
+    (set-frame-font "Hack-11"))
 (when (eq system-type 'windows-nt)
     (set-frame-font "Hack-10"))
