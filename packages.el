@@ -22,6 +22,8 @@
     flycheck
 	org
 	racket-mode
+	geiser
+	quack
 	haskell-mode))
 
 (package-initialize)
