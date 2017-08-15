@@ -17,7 +17,7 @@
   (progn
     (tool-bar-mode 0)
     (menu-bar-mode 0)
-    (scroll-bar-mode 0))
+    (scroll-bar-mode 0)))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
