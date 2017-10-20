@@ -17,6 +17,7 @@
 ;; Helm
 (require 'helm)
 (require 'helm-config)
+(require 'company)
 (eval-after-load 'company
   '(progn
 	 (define-key company-mode-map (kbd "<C-tab>") 'helm-company)
@@ -34,7 +35,8 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;; Projectile
-(projectile-global-mode)
+(require 'projectile)
+(projectile-mode)
 (defvar projectile-completion-system 'helm)
 (helm-projectile-on)
 
@@ -78,7 +80,6 @@
           (indent-for-tab-command)))))
 
 (global-set-key [backtab] 'tab-indent-or-complete)
-
 
 
 ;;; config.el ends here

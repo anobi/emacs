@@ -17,13 +17,13 @@
   (progn
     (tool-bar-mode 0)
     (menu-bar-mode 0)
-    (scroll-bar-mode 0))
+    (scroll-bar-mode 0)))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq mac-option-modifier nil
       mac-command-modifier 'meta
-      x-select-enable-clipboard t)
+      select-enable-clipboard t)
 
 (setq enable-recursive-minibuffers t)
 
@@ -34,6 +34,9 @@
 (setenv "SHELL" shell-file-name)
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
+(when (eq system-type 'darwin)
+  (setq exec-path (append exec-path '("/usr/local/bin"))))
+
 ;; Fonts
 (when (eq system-type 'gnu/linux)
     (set-frame-font "Monospace-8"))
@@ -41,3 +44,8 @@
     (set-frame-font "Hack-11"))
 (when (eq system-type 'windows-nt)
     (set-frame-font "Hack-10"))
+
+
+(provide 'interface)
+
+;;; interface.el ends here

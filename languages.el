@@ -32,8 +32,25 @@
 
 
 ;; Python
-(setq-default py-shell-name "ipython3")
+(require 'anaconda-mode)
+(require 'company)
+(require 'flycheck)
+(require 'python-mode)
+
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+
+(eval-after-load "company"
+  '(add-to-list 'company-backends 'elpy-company-backend))
+
+(setq-default py-shell-name "python")
 (setq-default py-which-bufname "IPython")
+
+(setq flycheck-flake8rc "~/.config/flake8")
+(setq flycheck-flake8-maximum-line-length 120)
 (setq py-split-window-on-execute t)
 (setq py-smart-indentation t)
-(setq py-python-command "python3")
+(setq py-python-command "python")
+
+(provide 'languages)
+;;; languages.el ends here

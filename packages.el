@@ -11,20 +11,31 @@
 (defvar package-list '(
     slime
     evil
-	paredit
+    paredit
     ido
     projectile
-	company
+    company
+	eldoc
+	ggtags
     helm
     helm-projectile
-	helm-company
-	yasnippet
+    helm-company
+	helm-cscope
+	helm-gtags
+    yasnippet
     flycheck
-	org
-	racket-mode
-	geiser
-	quack
-	haskell-mode))
+    org
+    racket-mode
+    geiser
+    quack
+    haskell-mode
+	busybee-theme
+	anaconda-mode
+	company-anaconda
+	pyvenv
+	xcscope
+	yapfify
+	))
 
 (package-initialize)
 

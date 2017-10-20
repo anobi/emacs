@@ -15,6 +15,7 @@ tramp
 recentf
 
 # Folders
+anaconda-mode
 auto-save-list
 semanticdb
 elpa
