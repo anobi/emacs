@@ -35,7 +35,6 @@
 (require 'anaconda-mode)
 (require 'company)
 (require 'flycheck)
-(require 'python-mode)
 
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)

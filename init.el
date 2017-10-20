@@ -20,9 +20,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (busybee)))
- '(max-specpdl-size 11380)
- '(menu-bar-mode nil)
+ '(custom-enabled-themes (quote (mustang)))
+ '(custom-safe-themes
+   (quote
+	("e3bf16af35586816b824bea36188215319b1cceb208d3518700d876c4c1a9cc7" default)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
