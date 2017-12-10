@@ -23,7 +23,10 @@
  '(custom-enabled-themes (quote (mustang)))
  '(custom-safe-themes
    (quote
-	("e3bf16af35586816b824bea36188215319b1cceb208d3518700d876c4c1a9cc7" default)))
+	("261dafb371d2d6e949a39849cf7672480662fb67f23822c6da18f0b457af2c7d" "e3bf16af35586816b824bea36188215319b1cceb208d3518700d876c4c1a9cc7" default)))
+ '(package-selected-packages
+   (quote
+	(exec-path-from-shell cargo flycheck-rust racer rust-mode rust-playground markdown-mode dockerfile-mode yasnippet yapfify slime racket-mode quack pyvenv powerline-evil paredit mustang-theme moe-theme helm-projectile helm-gtags helm-cscope helm-company haskell-mode ggtags geiser flycheck cyberpunk-theme company-anaconda busybee-theme)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

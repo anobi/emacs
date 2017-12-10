@@ -9,9 +9,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (defvar package-list '(
-    slime
     evil
-    paredit
     ido
     projectile
     company
@@ -25,16 +23,10 @@
     yasnippet
     flycheck
     org
-    racket-mode
-    geiser
-    quack
     haskell-mode
 	busybee-theme
-	anaconda-mode
-	company-anaconda
-	pyvenv
 	xcscope
-	yapfify
+	exec-path-from-shell
 	))
 
 (package-initialize)
