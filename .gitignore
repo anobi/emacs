@@ -12,7 +12,9 @@ ido.last
 tramp
 *.eld
 *.cache
+.org-id-locations
 recentf
+bookmarks
 
 # Folders
 anaconda-mode
@@ -20,4 +22,5 @@ auto-save-list
 semanticdb
 elpa
 eshell
+url
 .cache

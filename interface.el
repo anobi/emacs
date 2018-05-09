@@ -10,14 +10,16 @@
 
 (progn
   (global-linum-mode 1)
+  (global-hl-line-mode)
   (column-number-mode 1)
   (show-paren-mode 1))
 
 (if (display-graphic-p)
   (progn
-    (tool-bar-mode 0)
-    (menu-bar-mode 0)
-    (scroll-bar-mode 0)))
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)
+	(fringe-mode 1)))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -44,6 +46,10 @@
     (set-frame-font "Hack-11"))
 (when (eq system-type 'windows-nt)
     (set-frame-font "Hack-10"))
+
+(require 'neotree)
+(require 'all-the-icons)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 
 (provide 'interface)

@@ -24,9 +24,11 @@
     flycheck
     org
     haskell-mode
-	busybee-theme
 	xcscope
 	exec-path-from-shell
+	doom-themes
+	all-the-icons
+	neotree
 	))
 
 (package-initialize)
