@@ -9,8 +9,8 @@
 ;; Interface config
 
 (progn
-  (global-linum-mode 1)
-  (global-hl-line-mode)
+  (global-display-line-numbers-mode 1)
+  (global-hl-line-mode 1)
   (column-number-mode 1)
   (show-paren-mode 1))
 
@@ -21,6 +21,7 @@
     (scroll-bar-mode -1)
 	(fringe-mode 1)))
 
+(setq-default display-line-numbers-type 'relative)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq mac-option-modifier nil
