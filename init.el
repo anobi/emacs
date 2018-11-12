@@ -28,7 +28,7 @@
  '(midnight-mode t)
  '(package-selected-packages
    (quote
-	(tidal gdscript-mode hydra flycheck flycheck-clang-analyzer flycheck-pony helm-core flymake-cursor rainbow-delimiters jedi yasnippet yapfify slime rust-playground racket-mode racer quack pyvenv python-docstring python-django pylint powerline-evil pony-mode paredit neotree nasm-mode mustang-theme moe-theme markdown-mode+ magit-find-file iasm-mode helm-projectile helm-gtags helm-cscope helm-company haskell-mode gh-md ggtags flymd exec-path-from-shell evil-smartparens doom-themes dockerfile-mode docker-compose-mode docker cyberpunk-theme company-jedi company-anaconda cargo busybee-theme ac-geiser)))
+	(flycheck-rust flymake-rust tidal gdscript-mode hydra flycheck flycheck-clang-analyzer flycheck-pony helm-core flymake-cursor rainbow-delimiters jedi yasnippet yapfify slime rust-playground racket-mode racer quack pyvenv python-docstring python-django pylint powerline-evil pony-mode paredit neotree nasm-mode mustang-theme moe-theme markdown-mode+ magit-find-file iasm-mode helm-projectile helm-gtags helm-cscope helm-company gh-md ggtags flymd exec-path-from-shell evil-smartparens doom-themes dockerfile-mode docker-compose-mode docker cyberpunk-theme company-jedi company-anaconda cargo busybee-theme ac-geiser)))
  '(pyvenv-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))

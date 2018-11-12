@@ -8,10 +8,7 @@
 (defvar python-packages
   '(anaconda-mode
 	company-anaconda
-	pony-mode
-	pyvenv
-	yapfify
-    pylint))
+	pyvenv))
 
 ;; TODO: Replace with one installer that goes through all the lang modules
 (dolist (package python-packages)
@@ -30,14 +27,7 @@
 (eval-after-load "company"
   '(add-to-list 'company-backends 'company-anaconda))
 
-(setq-default py-shell-name "python")
-(setq-default py-which-bufname "IPython")
-
-; (setq flycheck-flake8rc "~/.config/flake8")
-; (setq flycheck-flake8-maximum-line-length 120)
-(setq py-split-window-on-execute t)
-(setq py-smart-indentation t)
-(setq py-python-command "python")
+(setq python-shell-interpreter "ipython3")
 
 (add-hook 'python-mode-hook (lambda ()
    (flycheck-mode 1)

@@ -17,5 +17,12 @@
 	  (kill-new filepath))
 	(message filepath)))
 
+(defun python-add-breakpoint ()
+  "Insert a python debugger breakpoint."
+  (interactive)
+  (progn
+	(end-of-line)
+	(newline-and-indent)
+	(insert "import ipdb; ipdb.set_trace()")))
 
 ;;; utils.el ends here

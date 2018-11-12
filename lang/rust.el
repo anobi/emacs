@@ -23,6 +23,9 @@
 ;; Rust
 (add-hook 'rust-mode-hook 'racer-mode)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(setq racer-rust-src-path "/usr/local/src/rust/rustc-1.29.2-src/src/")
 
 (provide 'rust.el)
 ;;; rust.el ends here
