@@ -10,6 +10,9 @@
 (setq-default tab-width 4 indent-tabs-mode t)
 
 (require 'cc-mode)
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+
 (defun my:save-and-compile()
   (interactive "")
   (save-buffer 0)

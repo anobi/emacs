@@ -22,11 +22,11 @@
 	helm-gtags
     yasnippet
     flycheck
-    org
     haskell-mode
 	xcscope
 	exec-path-from-shell
 	doom-themes
+	nimbus-theme
 	all-the-icons
 	neotree
 	))

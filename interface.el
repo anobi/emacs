@@ -52,7 +52,6 @@
 (require 'all-the-icons)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-
 (provide 'interface)
 
 ;;; interface.el ends here

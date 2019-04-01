@@ -19,7 +19,6 @@
 (require 'anaconda-mode)
 (require 'company)
 (require 'flycheck)
-(require 'pony-mode)
 
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
@@ -31,8 +30,8 @@
 
 (add-hook 'python-mode-hook (lambda ()
    (flycheck-mode 1)
-   (semantic-mode 1)
-   (setq flycheck-checker 'python-pylint
+   ;; (semantic-mode 1)
+   (setq flycheck-checker 'python-flake8
          flycheck-checker-error-threshold 900
          flycheck-pylintrc "~/.pylintrc")))
 

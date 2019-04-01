@@ -9,6 +9,11 @@
 (load "~/.emacs.d/lang/c_cpp")
 (load "~/.emacs.d/lang/python")
 (load "~/.emacs.d/lang/rust")
+(load "~/.emacs.d/lang/org")
+
+;; TODO: Get the lang specific packages here
+;; put them in a list and install them all in one place
+;; instead of doing the install magic per file
 
 ;; Misc languages
 
