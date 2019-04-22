@@ -32,7 +32,8 @@
 
 ;; Projectile
 (require 'projectile)
-(projectile-mode)
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (defvar projectile-completion-system 'helm)
 (helm-projectile-on)
 

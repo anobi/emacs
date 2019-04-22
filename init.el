@@ -21,7 +21,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#1c1f24" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#DFDFDF"])
+   ["#454545" "#d65946" "#6aaf50" "#baba36" "#598bc1" "#ab75c3" "#68a5e9" "#bdbdb3"])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (nimbus)))
  '(custom-safe-themes
@@ -34,7 +34,7 @@
  '(midnight-mode t)
  '(package-selected-packages
    (quote
-	(nimbus-theme fireplace flycheck-rust flymake-rust tidal gdscript-mode hydra flycheck flycheck-clang-analyzer flycheck-pony helm-core flymake-cursor rainbow-delimiters jedi yasnippet yapfify slime rust-playground racket-mode racer quack pyvenv python-docstring python-django pylint powerline-evil pony-mode paredit neotree nasm-mode mustang-theme moe-theme markdown-mode+ magit-find-file iasm-mode helm-projectile helm-gtags helm-cscope helm-company gh-md ggtags flymd exec-path-from-shell evil-smartparens doom-themes dockerfile-mode docker-compose-mode docker cyberpunk-theme company-jedi company-anaconda cargo busybee-theme ac-geiser)))
+	(clang-format nimbus-theme fireplace flycheck-rust flymake-rust tidal gdscript-mode hydra flycheck flycheck-clang-analyzer flycheck-pony helm-core flymake-cursor rainbow-delimiters jedi yasnippet yapfify slime rust-playground racket-mode racer quack pyvenv python-docstring python-django pylint powerline-evil pony-mode paredit neotree nasm-mode mustang-theme moe-theme markdown-mode+ magit-find-file iasm-mode helm-projectile helm-gtags helm-cscope helm-company gh-md ggtags flymd exec-path-from-shell evil-smartparens doom-themes dockerfile-mode docker-compose-mode docker cyberpunk-theme company-jedi company-anaconda cargo busybee-theme ac-geiser)))
  '(pyvenv-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil)

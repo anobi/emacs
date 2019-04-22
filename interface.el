@@ -24,6 +24,8 @@
 (setq-default display-line-numbers-type 'relative)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 (setq mac-option-modifier nil
       mac-command-modifier 'meta
       select-enable-clipboard t)
