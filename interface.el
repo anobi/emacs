@@ -15,16 +15,22 @@
   (show-paren-mode 1))
 
 (if (display-graphic-p)
-  (progn
-    (tool-bar-mode -1)
-    (menu-bar-mode -1)
-    (scroll-bar-mode -1)
-	(fringe-mode 1)))
+    (progn
+      (tool-bar-mode -1)
+      (menu-bar-mode -1)
+      (scroll-bar-mode -1)
+	  (fringe-mode 1)))
 
 (setq-default display-line-numbers-type 'relative)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
+
+(defun set-indent-mode (tabs width)
+  "Use spaces for indentation to TABS (either t or nil) with width of WIDTH."
+  (setq-default indent-tabs-mode tabs)
+  (setq-default tab-width width)
+  (setq indent-line-function 'insert-tab))
+
+(set-indent-mode nil 4)
+(add-hook 'emacs-lisp-mode-hook (lambda () (set-indent-mode nil 2)))
 
 (setq mac-option-modifier nil
       mac-command-modifier 'meta
@@ -44,11 +50,11 @@
 
 ;; Fonts
 (when (eq system-type 'gnu/linux)
-    (set-frame-font "Monospace-8"))
+  (set-frame-font "Monospace-8"))
 (when (eq system-type 'darwin)
-    (set-frame-font "Hack-11"))
+  (set-frame-font "Hack-11"))
 (when (eq system-type 'windows-nt)
-    (set-frame-font "Hack-10"))
+  (set-frame-font "Hack-10"))
 
 (require 'neotree)
 (require 'all-the-icons)

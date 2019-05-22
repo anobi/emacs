@@ -8,28 +8,29 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
-(defvar package-list '(
+(defvar package-list
+  '(
     evil
     ido
     projectile
     company
-	eldoc
-	ggtags
+	  eldoc
+	  ggtags
     helm
     helm-projectile
     helm-company
-	helm-cscope
-	helm-gtags
+	  helm-cscope
+	  helm-gtags
     yasnippet
     flycheck
     haskell-mode
-	xcscope
-	exec-path-from-shell
-	doom-themes
-	nimbus-theme
-	all-the-icons
-	neotree
-	))
+	  xcscope
+	  exec-path-from-shell
+	  doom-themes
+	  nimbus-theme
+	  all-the-icons
+	  neotree
+	  ))
 
 (package-initialize)
 

@@ -5,10 +5,10 @@
 
 ;;; Code:
 
-(defvar python-packages
-  '(anaconda-mode
-	company-anaconda
-	pyvenv))
+(defvar python-packages '(
+    jedi-core
+    company-jedi
+	  pyvenv))
 
 ;; TODO: Replace with one installer that goes through all the lang modules
 (dolist (package python-packages)
@@ -16,22 +16,23 @@
         (package-install package)))
 
 ;; Python
-(require 'anaconda-mode)
 (require 'company)
 (require 'flycheck)
-
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+(require 'company-jedi)
 
 (eval-after-load "company"
-  '(add-to-list 'company-backends 'company-anaconda))
+  '(add-to-list 'company-backends 'company-jedi)
+  )
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:get-in-function-call-delay 250)
+(setq jedi:use-shortcuts t)
 
 (setq python-shell-interpreter "ipython3")
 
 (add-hook 'python-mode-hook (lambda ()
    (flycheck-mode 1)
-   ;; (semantic-mode 1)
-   (setq flycheck-checker 'python-flake8
+   (setq flycheck-checker 'python-pep8
          flycheck-checker-error-threshold 900
          flycheck-pylintrc "~/.pylintrc")))
 
