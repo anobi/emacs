@@ -13,6 +13,9 @@
 ;; Evil
 (require 'evil)
 (evil-mode 1)
+(add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
+(add-hook 'lisp-mode-hook 'evil-paredit-mode)
+
 
 ;; Ido
 (require 'ido)
@@ -63,6 +66,9 @@
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
+
+(defvar company-tooltip-align-annotations t)
+(defvar company-minimum-prefix-length 1)
 (defvar company-dabbrev-downcase 0)
 (defvar company-idle-delay 0)
 (defun tab-indent-or-complete nil
@@ -77,5 +83,6 @@
           (indent-for-tab-command)))))
 
 (global-set-key [backtab] 'tab-indent-or-complete)
+
 
 ;;; config.el ends here

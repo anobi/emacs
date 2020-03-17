@@ -5,8 +5,9 @@
 
 ;;; Code:
 
-(defvar rust-packages
-  '(rust-mode
+(defvar rust-packages '(
+  rust-mode
+  toml-mode
 	rust-playground
 	flycheck-rust
 	cargo
@@ -17,15 +18,30 @@
         (package-install package)))
 
 (require 'rust-mode)
+(require 'lsp-mode)
+(require 'lsp-clients)
 (require 'cargo)
-(require 'racer)
+(require 'toml-mode)
+;; (require 'racer)
+
+(use-package lsp-mode
+  :commands lsp
+  :config (require 'lsp-clients))
+
+(use-package rust-mode
+  :hook (rust-mode . lsp))
+
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode))
 
 ;; Rust
-(add-hook 'rust-mode-hook 'racer-mode)
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
-(setq racer-rust-src-path "/usr/local/src/rust/rustc-1.29.2-src/src/")
+(defvar rust-backend "lsp")
+
+(add-to-list 'company-backend 'company-lsp)
 
 (provide 'rust.el)
 ;;; rust.el ends here

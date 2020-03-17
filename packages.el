@@ -8,14 +8,19 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+(unless package-archive-contents
+    (package-refresh-contents))
+
 (defvar package-list
   '(
+    use-package
     evil
     ido
     projectile
     company
 	  eldoc
 	  ggtags
+    lsp-mode
     helm
     helm-projectile
     helm-company
@@ -28,14 +33,10 @@
 	  exec-path-from-shell
 	  doom-themes
 	  nimbus-theme
-	  all-the-icons
 	  neotree
 	  ))
 
 (package-initialize)
-
-(unless package-archive-contents
-    (package-refresh-contents))
 
 (dolist (package package-list)
     (unless (package-installed-p package)

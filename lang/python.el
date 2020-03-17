@@ -31,10 +31,12 @@
 (setq python-shell-interpreter "ipython3")
 
 (add-hook 'python-mode-hook (lambda ()
-   (flycheck-mode 1)
-   (setq flycheck-checker 'python-pep8
-         flycheck-checker-error-threshold 900
-         flycheck-pylintrc "~/.pylintrc")))
+    (flycheck-mode 1)
+    (delq 'python-pycompile flycheck-checkers)
+    (setq flycheck-checker 'python-flake8
+          flycheck-checker-error-threshold 900
+          flycheck-flake8rc "~/.config/flake8"
+          flycheck-flake8-maximum-line-length 120)))
 
 (provide 'python.el)
 ;;; python.el ends here

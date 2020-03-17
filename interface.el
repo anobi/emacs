@@ -57,7 +57,6 @@
   (set-frame-font "Hack-10"))
 
 (require 'neotree)
-(require 'all-the-icons)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 (provide 'interface)
