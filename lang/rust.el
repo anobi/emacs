@@ -19,7 +19,7 @@
 
 (require 'rust-mode)
 (require 'lsp-mode)
-(require 'lsp-clients)
+(require 'lsp)
 (require 'cargo)
 (require 'toml-mode)
 ;; (require 'racer)
