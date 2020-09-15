@@ -26,7 +26,7 @@
 
 (use-package lsp-mode
   :commands lsp
-  :config (require 'lsp-clients))
+  :config (require 'lsp))
 
 (use-package rust-mode
   :hook (rust-mode . lsp))
