@@ -15,28 +15,27 @@
   '(
     use-package
     evil
+    evil-paredit
     ido
     projectile
     company
-	  eldoc
-	  ggtags
+    eldoc
+    ggtags
     lsp-mode
     helm
     helm-projectile
     helm-company
-	  helm-cscope
-	  helm-gtags
+    helm-cscope
+    helm-gtags
     yasnippet
     flycheck
     haskell-mode
-	  xcscope
-	  exec-path-from-shell
-	  doom-themes
-	  nimbus-theme
-	  neotree
-	  ))
-
-(package-initialize)
+    xcscope
+    exec-path-from-shell
+    doom-themes
+    nimbus-theme
+    neotree
+))
 
 (dolist (package package-list)
     (unless (package-installed-p package)

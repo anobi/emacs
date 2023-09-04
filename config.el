@@ -12,6 +12,7 @@
 
 ;; Evil
 (require 'evil)
+(require 'evil-paredit)
 (evil-mode 1)
 (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
 (add-hook 'lisp-mode-hook 'evil-paredit-mode)
@@ -23,7 +24,6 @@
 
 ;; Helm
 (require 'helm)
-(require 'helm-config)
 (require 'company)
 (eval-after-load 'company
   '(progn

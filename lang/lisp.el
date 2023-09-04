@@ -8,11 +8,11 @@
 ;; Packages
 
 (defvar lispy-packages
-  '(slime
+  '(
+    slime
     paredit
-	racket-mode
-    geiser
-    quack))
+    racket-mode
+    geiser))
 
 (dolist (package lispy-packages)
     (unless (package-installed-p package)
@@ -32,7 +32,7 @@
 ;; Lisp
 ;; use different sbcl path for osx
 (if (eq system-type 'darwin)
-  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+  (setq inferior-lisp-program "/opt/homebrew/bin/sbcl")
   (setq inferior-lisp-program "sbcl"))
 ;; slime
 (require 'slime-autoloads)
