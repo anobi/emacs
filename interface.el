@@ -56,9 +56,6 @@
 (when (eq system-type 'windows-nt)
   (set-frame-font "Hack-10"))
 
-(require 'neotree)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
 (provide 'interface)
 
 ;;; interface.el ends here

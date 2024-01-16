@@ -6,9 +6,9 @@
 ;;; Code:
 
 (defvar python-packages '(
-    jedi-core
-    company-jedi
-	  pyvenv))
+  lsp-pyright
+  poetry
+  pyvenv))
 
 ;; TODO: Replace with one installer that goes through all the lang modules
 (dolist (package python-packages)
@@ -18,17 +18,15 @@
 ;; Python
 (require 'company)
 (require 'flycheck)
-(require 'company-jedi)
-
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-jedi)
-  )
-
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:get-in-function-call-delay 250)
-(setq jedi:use-shortcuts t)
+(require 'lsp-mode)
 
 (setq python-shell-interpreter "ipython3")
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+    (require 'lsp-pyright)
+    (lsp))))  ; or lsp-deferred
 
 (add-hook 'python-mode-hook (lambda ()
     (flycheck-mode 1)

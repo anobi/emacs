@@ -15,12 +15,16 @@ tramp
 .org-id-locations
 recentf
 bookmarks
+projects
+.lsp-session*
 
 # Folders
 anaconda-mode
 auto-save-list
 semanticdb
-elpa
+elpa/
 eshell
 url
 .cache
+eln-cache/
+transient/

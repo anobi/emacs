@@ -10,6 +10,7 @@
 (load "~/.emacs.d/lang/python")
 (load "~/.emacs.d/lang/rust")
 (load "~/.emacs.d/lang/org")
+(load "~/.emacs.d/lang/haskell")
 
 ;; TODO: Get the lang specific packages here
 ;; put them in a list and install them all in one place

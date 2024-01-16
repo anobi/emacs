@@ -18,15 +18,9 @@
         (package-install package)))
 
 (require 'rust-mode)
-(require 'lsp-mode)
-(require 'lsp)
 (require 'cargo)
 (require 'toml-mode)
 ;; (require 'racer)
-
-(use-package lsp-mode
-  :commands lsp
-  :config (require 'lsp))
 
 (use-package rust-mode
   :hook (rust-mode . lsp))
@@ -35,13 +29,10 @@
   :hook (rust-mode . cargo-minor-mode))
 
 ;; Rust
+(add-hook 'rust-mode-hook #'eglot-ensure)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-(defvar rust-backend "lsp")
-
-(add-to-list 'company-backend 'company-lsp)
 
 (provide 'rust.el)
 ;;; rust.el ends here
