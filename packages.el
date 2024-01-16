@@ -11,6 +11,11 @@
 (unless package-archive-contents
     (package-refresh-contents))
 
+;; TODO: Try elpaca or straight.el instead of package.el as package manager?
+;; TODO: Other packages to check out:
+;;       * Tempel to replace yasnippet
+;;       * Dap-mode for debugging
+;;       * Treemacs if I need a tree
 (defvar package-list
   '(
     use-package
@@ -31,7 +36,7 @@
     exec-path-from-shell
     doom-themes
     nimbus-theme
-))
+    ))
 
 (dolist (package package-list)
     (unless (package-installed-p package)

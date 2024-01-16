@@ -17,6 +17,7 @@
     (unless (package-installed-p package)
         (package-install package)))
 
+(require 'eglot)
 (require 'rust-mode)
 (require 'cargo)
 (require 'toml-mode)
@@ -29,10 +30,15 @@
   :hook (rust-mode . cargo-minor-mode))
 
 ;; Rust
-(add-hook 'rust-mode-hook #'eglot-ensure)
+(add-hook 'rust-mode-hook 'eglot-ensure)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(when (executable-find "rust-analyzer")
+  (add-to-list 'eglot-server-programs
+    '(rust-mode . (eglot-rust-analyzer "rust-analyzer"))))
+
 
 (provide 'rust.el)
 ;;; rust.el ends here
