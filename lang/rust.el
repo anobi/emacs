@@ -10,8 +10,7 @@
   toml-mode
 	rust-playground
 	flycheck-rust
-	cargo
-	racer))
+	cargo))
 
 (dolist (package rust-packages)
     (unless (package-installed-p package)
@@ -21,7 +20,6 @@
 (require 'rust-mode)
 (require 'cargo)
 (require 'toml-mode)
-;; (require 'racer)
 
 (use-package rust-mode
   :hook (rust-mode . lsp))
@@ -31,8 +29,6 @@
 
 ;; Rust
 (add-hook 'rust-mode-hook 'eglot-ensure)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 (when (executable-find "rust-analyzer")

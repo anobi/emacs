@@ -20,16 +20,17 @@
   '(
     use-package
     evil
-    evil-paredit
+    ;; evil-paredit
     ido
     projectile
-    company
+    corfu
     eldoc
     ggtags
     helm
     helm-projectile
     helm-cscope
     helm-gtags
+    helm-lsp
     yasnippet
     flycheck
     xcscope

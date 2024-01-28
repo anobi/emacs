@@ -17,7 +17,6 @@
 
 ;; Python
 (require 'python)
-(require 'company)
 (require 'flycheck)
 (require 'lsp-mode)
 

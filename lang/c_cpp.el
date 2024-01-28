@@ -8,9 +8,13 @@
 ;; C & C++
 (setq-default c-basic-offset 4 c-default-style "linux")
 
+(require 'lsp)
 (require 'cc-mode)
+(require 'flycheck)
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+;; (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
 
 (defun my:save-and-compile()
   (interactive "")

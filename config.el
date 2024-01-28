@@ -12,11 +12,7 @@
 
 ;; Evil
 (require 'evil)
-(require 'evil-paredit)
 (evil-mode 1)
-(add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
-(add-hook 'lisp-mode-hook 'evil-paredit-mode)
-
 
 ;; Ido
 (require 'ido)
@@ -58,37 +54,17 @@
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; Company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(with-eval-after-load 'company
-  (define-key company-active-map
-              (kbd "TAB")
-              #'company-complete-common-or-cycle)
-  (define-key company-active-map
-              (kbd "<backtab>")
-              (lambda ()
-                (interactive)
-                (company-complete-common-or-cycle -1))))
-
-(defvar company-tooltip-align-annotations t)
-(defvar company-minimum-prefix-length 1)
-(defvar company-dabbrev-downcase 0)
-(defvar company-idle-delay 0)
-
-;; (require 'yasnippet)
-;; (defun tab-indent-or-complete nil
-;;   "Tab completes stuff."
-;;   (interactive)
-;;   (if (minibufferp)
-;;       (minibuffer-complete)
-;;     (if (or (not 'yas-minor-mode)
-;;             (null (yas-expand)))
-;;         (if (check-expansion)
-;;             (company-complete-common)
-;;           (indent-for-tab-command)))))
-
-;; (global-set-key [backtab] 'tab-indent-or-complete)
-
+;; Corfu
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  (corfu-quit-no-match t)
+  (corfu-quit-at-boundary 'separator)
+  :init
+  (global-corfu-mode))
+(use-package emacs
+  :init
+  (setq completion-cycle-threshold 3)
+  (setq tab-always-indent 'complete))
 
 ;;; config.el ends here
