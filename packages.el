@@ -21,16 +21,17 @@
     use-package
     evil
     ;; evil-paredit
-    ido
+    ;; ido
     projectile
     corfu
     eldoc
     ggtags
-    helm
-    helm-projectile
-    helm-cscope
-    helm-gtags
-    helm-lsp
+    ;; helm
+    ;; helm-projectile
+    ;; helm-cscope
+    ;; helm-gtags
+    ;; helm-lsp
+    savehist
     yasnippet
     flycheck
     xcscope

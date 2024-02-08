@@ -25,12 +25,15 @@
 
 (defun set-indent-mode (tabs width)
   "Use spaces for indentation to TABS (either t or nil) with width of WIDTH."
-  (setq-default indent-tabs-mode tabs)
-  (setq-default tab-width width)
-  (setq indent-line-function 'insert-tab))
+  (setq-default
+    indent-tabs-mode tabs
+    tab-width width)
+  (setq indent-line-function 'indent-relative))
 
 (set-indent-mode nil 4)
-(add-hook 'emacs-lisp-mode-hook (lambda () (set-indent-mode nil 2)))
+(add-hook 'emacs-lisp-mode-hook
+  (lambda ()
+  (set-indent-mode nil 2)))
 
 (setq mac-option-modifier nil
       mac-command-modifier 'meta

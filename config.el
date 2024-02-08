@@ -14,57 +14,55 @@
 (require 'evil)
 (evil-mode 1)
 
-;; Ido
-(require 'ido)
-(ido-mode t)
 
-;; Helm
-(require 'helm)
+(use-package savehist
+  :init
+  (savehist-mode))
+
 (electric-pair-mode t)
-
 
 ;; Projectile
 (require 'projectile)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(defvar projectile-completion-system 'helm)
-(helm-projectile-on)
-
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z") 'helm-select-action)
-
-(defvar helm-autoresize-max-height 0)
-(defvar helm-autoresize-min-height 20)
-(defvar helm-split-window-in-side-p t)
-(defvar helm-move-to-line-cycle-in-source t)
-(defvar helm-ff-search-library-in-sexp t)
-(defvar helm-M-x-fuzzy-match t)
-(defvar helm-buffers-fuzzy-matching t)
-(defvar helm-recentf-fuzzy-match t)
-
-(helm-autoresize-mode 1)
-(helm-mode 1)
+  
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Corfu
+;; TODO: Move this to completion module?
 (use-package corfu
   :custom
   (corfu-auto t)
   (corfu-quit-no-match t)
   (corfu-quit-at-boundary 'separator)
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+  :bind
+  (:map corfu-map
+        ("C-n" . corfu-scroll-down)
+        ("C-p" . corfu-scroll-up))
   :init
   (global-corfu-mode))
+
 (use-package emacs
   :init
+  (defun crm-indicator (args)
+    (cons (format "[CRM%s] %s"
+                  (replace-regexp-in-string
+                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                   crm-separator)
+                  (car args))
+          (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  
   (setq completion-cycle-threshold 3)
-  (setq tab-always-indent 'complete))
+  (setq tab-always-indent 'complete)
+  (setq enable-recursive-minibuffers t))
 
 ;;; config.el ends here
