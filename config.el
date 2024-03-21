@@ -65,4 +65,58 @@
   (setq tab-always-indent 'complete)
   (setq enable-recursive-minibuffers t))
 
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+
+(use-package lsp-mode
+  :custom
+  (lsp-completion-provider :none)
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex)))
+  :hook
+  (lsp-completion-mode . my/lsp-mode-setup-completion))
+
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+
+(use-package lsp-mode
+  :custom
+  (lsp-completion-provider :none)
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex)))
+  :hook
+  (lsp-completion-mode . my/lsp-mode-setup-completion))
+
+  (advice-add 'eglot-completion-at-point :around #'cape-warp-buster)
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+
+(use-package lsp-mode
+  :custom
+  (lsp-completion-provider :none)
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex)))
+  :hook
+  (lsp-completion-mode . my/lsp-mode-setup-completion))
+
+  (advice-add 'eglot-completion-at-point :around #'cape-warp-buster)
+
 ;;; config.el ends here

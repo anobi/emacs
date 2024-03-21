@@ -24,6 +24,7 @@
     ;; ido
     projectile
     corfu
+    cape
     eldoc
     ggtags
     ;; helm
