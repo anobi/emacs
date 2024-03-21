@@ -20,18 +20,12 @@
   '(
     use-package
     evil
-    ;; evil-paredit
-    ;; ido
     projectile
     corfu
     cape
     eldoc
+    eat
     ggtags
-    ;; helm
-    ;; helm-projectile
-    ;; helm-cscope
-    ;; helm-gtags
-    ;; helm-lsp
     savehist
     yasnippet
     flycheck
