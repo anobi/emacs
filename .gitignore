@@ -29,3 +29,4 @@ url
 .cache
 eln-cache/
 transient/
+elisp-autofmt-cache/
