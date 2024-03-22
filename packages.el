@@ -38,6 +38,7 @@
     exec-path-from-shell
     doom-themes
     nimbus-theme
+    winner
     ))
 
 (dolist (package package-list)

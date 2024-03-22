@@ -14,6 +14,10 @@
 (require 'evil)
 (evil-mode 1)
 
+(use-package winner
+  :custom
+  (winner-mode 1))
+
 
 (use-package savehist
   :init
@@ -37,12 +41,14 @@
   (corfu-auto t)
   (corfu-quit-no-match t)
   (corfu-quit-at-boundary 'separator)
-  (corfu-cycle t)
+  (corfu-cycle nil)
   (corfu-preselect 'prompt)
+
   :bind
   (:map corfu-map
-        ("C-n" . corfu-scroll-down)
-        ("C-p" . corfu-scroll-up))
+        ("C-n" . corfu-next)
+        ("C-p" . corfu-previous))
+
   :init
   (global-corfu-mode))
 
