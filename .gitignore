@@ -20,6 +20,7 @@ projects
 history
 
 # Folders
+tree-sitter/
 anaconda-mode
 auto-save-list
 semanticdb
