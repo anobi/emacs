@@ -38,7 +38,7 @@
 ;; Flycheck
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :hook (after-init-hook . global-flycheck-mode))
 
 ;; Corfu
 ;; TODO: Move this to completion module?
@@ -62,7 +62,7 @@
  emacs
  :ensure nil ;; Built-in config
  :init
- (defun crm-indicator (args)
+ (defun crm-indicator (args) ;; TODO: wtf was this?
    (cons
     (format "[CRM%s] %s"
             (replace-regexp-in-string

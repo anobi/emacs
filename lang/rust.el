@@ -7,15 +7,15 @@
 
 
 (use-package rust-mode
-  :ensure t)
+  :ensure t
+  :hook (rust-mode-hook . eglot-ensure))
+
+(use-package flycheck-rust
+  :ensure t
+  :hook (flycheck-mode-hook . flycheck-rust-setup))
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
-
-;; Rust
-(add-hook 'rust-mode-hook 'eglot-ensure)
-;; TODO: fix?
-;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 ;; (when (executable-find "rust-analyzer")
 ;;   (add-to-list 'eglot-server-programs
