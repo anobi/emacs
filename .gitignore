@@ -25,6 +25,7 @@ anaconda-mode
 auto-save-list
 semanticdb
 elpa/
+elpaca/
 eshell
 url
 .cache

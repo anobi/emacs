@@ -6,31 +6,39 @@
 ;;; Code:
 
 ;;
-(require 'exec-path-from-shell)
-(if (eq system-type 'darwin)
-    (exec-path-from-shell-initialize))
 
+
+;; Built-in packages
+(savehist-mode 1)
+
+
+;; Packages from repositories
+(use-package exec-path-from-shell
+  :ensure (:host github :repo "purcell/exec-path-from-shell")
+  :config
+    (if (eq system-type 'darwin)
+      (exec-path-from-shell-initialize)))
+  
+;; (require 'exec-path-from-shell)
+ 
 ;; Evil
-(require 'evil)
-(evil-mode 1)
+(use-package evil
+  :config
+  (evil-mode 1))
 
-(use-package winner
-  :custom
-  (winner-mode 1))
-
-
-(use-package savehist :init (savehist-mode))
 
 (electric-pair-mode t)
 
 ;; Projectile
-(require 'projectile)
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
+(use-package projectile
+  :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;; Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 ;; Corfu
 ;; TODO: Move this to completion module?
@@ -47,11 +55,12 @@
         ("C-n" . corfu-next)
         ("C-p" . corfu-previous))
 
-  :init
+  :config
   (global-corfu-mode))
 
 (use-package
  emacs
+ :ensure nil ;; Built-in config
  :init
  (defun crm-indicator (args)
    (cons
@@ -77,18 +86,10 @@
  (add-to-list 'completion-at-point-functions #'cape-file)
  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
-(use-package
- lsp-mode
- :custom (lsp-completion-provider :none)
- :init
- (defun my/lsp-mode-setup-completion ()
-   (setf (alist-get
-          'styles
-          (alist-get 'lsp-capf completion-category-defaults))
-         '(flex)))
- :hook (lsp-completion-mode . my/lsp-mode-setup-completion))
-(advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+(use-package eat
+  :ensure (:host "https://codeberg.org/akib/emacs-eat")
+  :init (add-hook 'eshell-load-hook #'eat-eshell-mode))
 
-(use-package eat :init (add-hook 'eshell-load-hook #'eat-eshell-mode))
+
 
 ;;; config.el ends here

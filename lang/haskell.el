@@ -5,14 +5,7 @@
 
 ;;; Code:
 
-(defvar haskell-packages '(
-  haskell-mode
-))
-
-(dolist (package haskell-packages)
-    (unless (package-installed-p package)
-        (package-install package)))
-
-(require 'haskell-mode)
+(use-package haskell-mode
+  :ensure t)
   
 ;;; haskell.el ends here

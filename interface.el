@@ -2,11 +2,16 @@
 
 ;;; Commentary:
 ;;; Fonts, themes and such, config them heres
+;;; Do not configure anything requiring packages here.
+;;; This will load before the package manager
 
 ;;; Code:
 
 
 ;; Interface config
+
+(use-package nimbus-theme
+  :config (load-theme 'nimbus t))
 
 (progn
   (global-display-line-numbers-mode 1)

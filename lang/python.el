@@ -5,20 +5,8 @@
 
 ;;; Code:
 
-(defvar python-packages '(
-  lsp-pyright
-  poetry
-  pyvenv))
-
-;; TODO: Replace with one installer that goes through all the lang modules
-(dolist (package python-packages)
-    (unless (package-installed-p package)
-        (package-install package)))
 
 ;; Python
-(require 'python)
-(require 'flycheck)
-(require 'lsp-mode)
 
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
@@ -28,6 +16,12 @@
   :hook (python-mode . (lambda ()
     (require 'lsp-pyright)
     (lsp))))  ; or lsp-deferred
+
+(use-package poetry
+  :ensure t)
+
+(use-package pyvenv
+  :ensure t)
 
 (add-hook 'python-mode-hook (lambda ()
     (flycheck-mode 1)

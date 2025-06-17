@@ -5,6 +5,20 @@
 
 ;;; Code:
 
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook
+         (python-mode . lsp-deferred)
+         (c-mode-hook . lsp-deferred)
+         (c++-mode-hook . lsp-deferred)
+         (rust-mode . lsp-deferred)
+  :commands lsp-deferred)
+
+(use-package toml-mode
+  :ensure t)
+
 (load "~/.emacs.d/lang/lisp")
 (load "~/.emacs.d/lang/c_cpp")
 (load "~/.emacs.d/lang/python")

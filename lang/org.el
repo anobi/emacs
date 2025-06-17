@@ -5,15 +5,6 @@
 
 ;;; Code:
 
-(defvar org-packages
-  '(org))
-
-;; TODO: Install these in packages.el
-;; just get all the lang packages in packages.el, iterate and install
-(dolist (package org-packages)
-    (unless (package-installed-p package)
-        (package-install package)))
-
 (require 'org)
 
 (add-hook 'org-mode-hook 'org-indent-mode)

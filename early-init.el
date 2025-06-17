@@ -3,6 +3,11 @@
 ;;; Code:
 
 
+
+;; Elpaca requirements: prevent package.el loading packages prior to their init file loading
+(setq package-enable-at-startup nil)
+
+
 (defun homebrew-gcc-paths ()
   "Return GCC library paths from Homebrew installations.
 Detects paths for gcc and libgccjit packages to be used in LIBRARY_PATH."

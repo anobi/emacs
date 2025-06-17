@@ -5,11 +5,10 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(elpaca elpaca-use-package
+  (elpaca-use-package-mode)
+  (setq elpaca-use-package-by-default t))
 
-(unless package-archive-contents
-    (package-refresh-contents))
 
 ;; TODO: Try elpaca or straight.el instead of package.el as package manager?
 ;; TODO: Other packages to check out:
@@ -18,26 +17,15 @@
 ;;       * Treemacs if I need a tree
 (defvar package-list
   '(
-    use-package
-    evil
-    projectile
-    corfu
-    cape
     eldoc
-    eat
     ggtags
-    savehist
     yasnippet
-    flycheck
     xcscope
-    exec-path-from-shell
     doom-themes
-    nimbus-theme
-    winner
     ))
 
-(dolist (package package-list)
-    (unless (package-installed-p package)
-        (package-install package)))
+;;(dolist (pkg package-list)
+;;  (unless (package-installed-p package)
+;;    (package-install package)))
 
 ;;; packages.el ends here

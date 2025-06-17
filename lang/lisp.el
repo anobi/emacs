@@ -7,39 +7,36 @@
 
 ;; Packages
 
-(defvar lispy-packages
-  '(
-    slime
-    paredit
-    racket-mode
-    geiser))
 
-(dolist (package lispy-packages)
-    (unless (package-installed-p package)
-        (package-install package)))
+(use-package slime
+  :init (require 'slime-autoloads))
 
 ;; Paredit
-(require 'paredit)
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+;; Disabled until I can figure out whats wrong with the config
+;; (use-package paredit
+;;   :hook ((emacs-lisp-mode-hook . paredit-mode)
+;;     (eval-expression-minibuffer-setup-hook . paredit-mode)
+;;     (ielm-mode-hook . paredit-mode)
+;;     (lisp-mode-hook . paredit-mode)
+;;     (lisp-interaction-mode-hook. paredit-mode)
+;;     (slime-repl-mode-hook . paredit-mode)
+;;     (scheme-mode-hook . paredit-mode)))
 
 ;; Lisp
 ;; use different sbcl path for osx
 (if (eq system-type 'darwin)
   (setq inferior-lisp-program "/opt/homebrew/bin/sbcl")
   (setq inferior-lisp-program "sbcl"))
+
 ;; slime
-(require 'slime-autoloads)
-(slime-setup '(slime-fancy))
-(slime)
+;(use-package slime-autoloads
+  ;:config ((slime-setup '(slime-fancy))
+           ;(slime)))
+
 
 ;; Scheme
+(use-package racket-mode)
+(use-package geiser)
 
 (provide 'lisp)
 ;;; lisp.el ends here
