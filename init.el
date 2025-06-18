@@ -3,6 +3,14 @@
 ;;; Code:
 
 
+(load "~/.emacs.d/elpaca_bootstrap")
+(load "~/.emacs.d/interface")
+(load "~/.emacs.d/packages")
+(load "~/.emacs.d/minibuffer")
+(load "~/.emacs.d/config")
+(load "~/.emacs.d/languages")
+(load "~/.emacs.d/utils") 
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -77,10 +85,3 @@
  ;; If there is more than one, they won't work right.
  )
 
-(load "~/.emacs.d/elpaca_bootstrap")
-(load "~/.emacs.d/packages")
-(load "~/.emacs.d/interface")
-(load "~/.emacs.d/minibuffer")
-(load "~/.emacs.d/config")
-(load "~/.emacs.d/languages")
-(load "~/.emacs.d/utils") 

@@ -10,6 +10,7 @@
 
 ;; Built-in packages
 (savehist-mode 1)
+(eldoc-mode 1)
 
 
 ;; Packages from repositories
