@@ -9,9 +9,12 @@
 
 
 ;; Built-in packages
-(savehist-mode 1)
 (eldoc-mode 1)
 
+(use-package savehist
+  :ensure nil
+  :init
+  (savehist-mode))
 
 ;; Packages from repositories
 (use-package exec-path-from-shell
@@ -41,6 +44,7 @@
   :ensure t
   :hook (after-init-hook . global-flycheck-mode))
 
+
 ;; Corfu
 ;; TODO: Move this to completion module?
 (use-package corfu
@@ -59,26 +63,20 @@
   :config
   (global-corfu-mode))
 
-(use-package
- emacs
- :ensure nil ;; Built-in config
- :init
- (defun crm-indicator (args) ;; TODO: wtf was this?
-   (cons
-    (format "[CRM%s] %s"
-            (replace-regexp-in-string
-             "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" "" crm-separator)
-            (car args))
-    (cdr args)))
- (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+(use-package emacs
+  :ensure nil ;; Built-in config
+  :custom
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete)
 
- (setq minibuffer-prompt-properties
-       '(read-only t cursor-intangible t face minibuffer-prompt))
- (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  ;; Emacs 30 and newer: Disable Ispell completion function.
+  ;; Try `cape-dict' as an alternative.
+  (text-mode-ispell-word-completion nil)
 
- (setq completion-cycle-threshold 3)
- (setq tab-always-indent 'complete)
- (setq enable-recursive-minibuffers t))
+  ;; Hide commands in M-x which do not apply to the current mode.  Corfu
+  ;; commands are hidden, since they are not used via M-x. This setting is
+  ;; useful beyond Corfu.
+  (read-extended-command-predicate #'command-completion-default-include-p))
 
 (use-package
  cape
