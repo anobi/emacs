@@ -5,7 +5,6 @@
 
 (load "~/.emacs.d/elpaca_bootstrap")
 (load "~/.emacs.d/interface")
-(load "~/.emacs.d/packages")
 (load "~/.emacs.d/minibuffer")
 (load "~/.emacs.d/config")
 (load "~/.emacs.d/languages")
