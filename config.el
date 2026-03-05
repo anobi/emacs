@@ -20,6 +20,7 @@
  
 ;; Evil
 (use-package evil
+  :ensure t
   :config
   (evil-mode 1))
 
@@ -28,6 +29,7 @@
 
 ;; Projectile
 (use-package projectile
+  :ensure t
   :config
     (projectile-mode +1)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
@@ -76,12 +78,12 @@
   ;; useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p))
 
-(use-package
- cape
- :init
- (add-to-list 'completion-at-point-functions #'cape-dabbrev)
- (add-to-list 'completion-at-point-functions #'cape-file)
- (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+(use-package cape
+  :ensure t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
 (use-package eat
   :ensure (:host "https://codeberg.org/akib/emacs-eat")

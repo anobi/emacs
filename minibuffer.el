@@ -8,11 +8,13 @@
 
 ;; Enable and configure Vertico
 (use-package vertico
+  :ensure t
   :init
   (vertico-mode))
 
 
 (use-package marginalia
+  :ensure t
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
@@ -30,6 +32,7 @@
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
+  :ensure t
   :custom
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))

@@ -11,6 +11,7 @@
 ;; Interface config
 
 (use-package nimbus-theme
+  :ensure t
   :config (load-theme 'nimbus t))
 
 (progn

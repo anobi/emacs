@@ -9,6 +9,7 @@
 
 
 (use-package slime
+  :ensure t
   :init (require 'slime-autoloads))
 
 ;; Paredit
@@ -35,8 +36,10 @@
 
 
 ;; Scheme
-(use-package racket-mode)
-(use-package geiser)
+(use-package racket-mode
+  :ensure t)
+(use-package geiser
+  :ensure t)
 
 (provide 'lisp)
 ;;; lisp.el ends here
