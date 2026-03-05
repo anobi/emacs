@@ -44,6 +44,11 @@
   :ensure t
   :hook (after-init-hook . global-flycheck-mode))
 
+(use-package transient
+  :ensure (:wait t))
+
+(use-package magit
+  :ensure t)
 
 ;; Corfu
 ;; TODO: Move this to completion module?
