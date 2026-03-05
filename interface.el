@@ -47,14 +47,13 @@
 (setq enable-recursive-minibuffers t)
 
 ;; Shell settings
-(setq explicit-shell-file-name (getenv "SHELL"))
-(setq shell-file-name "bash")
-(setq explicit-bash.exe-args '("--noediting" "--login" "-i"))
-(setenv "SHELL" shell-file-name)
-(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
 (when (eq system-type 'darwin)
-  (setq exec-path (append exec-path '("/usr/local/bin"))))
+  (use-package exec-path-from-shell
+    :ensure t
+    :init
+      (exec-path-from-shell-initialize)
+      (exec-path-from-shell-copy-env "PYTHONPATH")))
 
 ;; Fonts
 (when (eq system-type 'gnu/linux)

@@ -17,13 +17,6 @@
   (savehist-mode))
 
 ;; Packages from repositories
-(use-package exec-path-from-shell
-  :ensure (:host github :repo "purcell/exec-path-from-shell")
-  :config
-    (if (eq system-type 'darwin)
-      (exec-path-from-shell-initialize)))
-  
-;; (require 'exec-path-from-shell)
  
 ;; Evil
 (use-package evil
